@@ -26,6 +26,10 @@ Route::group([
         Route::get('folders/{id}', function($id) {
             return Folder::find($id);
         });
+
+        Route::get('foldersParent/{id}', function($id) {
+            return Folder::where("parent","=",$id)->get();
+        });
         
         Route::post('folders', function(Request $request) {
             $data = $request->all();
